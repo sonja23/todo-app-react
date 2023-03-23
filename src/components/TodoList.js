@@ -3,11 +3,11 @@ import Todo from "./Todo";
 import TodoForm from "./TodoForm";
 
 function TodoList() {
+    const regexSpace = new RegExp('^[^-\s][a-zA-Z0-9_\s-]+$')
     const [todos, setTodods] = useState([])
     const addTodo = todo => {
         const newTodos = [todo, ...todos]
         setTodods(newTodos)
-
     }
     const removeTodo = id => {
         const removeArr = [...todos].filter(todo => todo.id !== id)

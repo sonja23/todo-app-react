@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import TodoForm from "./TodoForm";
 import { RiCloseCircleLine } from 'react-icons/ri'
+import { TfiClose } from "react-icons/tfi";
 import { TiEdit } from 'react-icons/ti'
 function Todo({ todos, completeTodo, removeTodo, updateTodo }) {
     const [edit, setEdit] = useState({ id: null, text: '' })
@@ -20,14 +21,16 @@ function Todo({ todos, completeTodo, removeTodo, updateTodo }) {
             <div key={todo.id} onClick={() => completeTodo(todo.id)}>
                 {todo.text}
             </div>
+            <button
+                onClick={() => setEdit({ id: todo.id, text: todo.text })}
+                className="edit-button" >Edit
+            </button>
             <div className='icons'>
-                <RiCloseCircleLine
+                <TfiClose
                     onClick={() => removeTodo(todo.id)}
                     className="delete-icon"
                 />
-                <TiEdit
-                    onClick={() => setEdit({ id: todo.id, text: todo.text })}
-                    className="edit-icon" />
+
             </div>
         </div>
     ))
